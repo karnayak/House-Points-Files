@@ -132,7 +132,7 @@ totaltxt = "Asgard: " + str(asgard_pts_enter.get()) + "\n" + "Wakanda: " + str(w
 # Email Part of Program
 
 def email():
-    contacts = ["kartik.nayak@sis-semarang.org"]
+    contacts = ["secondary.1.students@sis-semarang.org", "secondary.2.students@sis-semarang.org", "secondary.3.students@sis-semarang.org", "secondary.4.students@sis-semarang.org", "jc1.students@sis-semarang.org", "jc2.students@sis-semarang.org", "secondary.teacher@sis-semarang.org"]
     mailserver = smtplib.SMTP('smtp.gmail.com', 587)
     mailserver.starttls()
     mailserver.login("publicbetaprogram@gmail.com", "publicbeta")
