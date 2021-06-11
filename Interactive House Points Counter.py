@@ -27,7 +27,7 @@ root = Tk()
 root.config(bg="pink")
 root.geometry("1000x1500")
 
-# Clock
+# 
 def clock():
     hour = time.strftime("%H")
     minute = time.strftime("%M")
@@ -36,7 +36,7 @@ def clock():
     watch.config(text=hour + ":" + minute + ":" + second)
     watch.after(1000, clock)
 
-watch = Label(root, text="", fg="green", bg="black", font=("Helvetica, 20"))
+watch = Label(root, text="", fg="black", bg="green", font=("Helvetica, 20"))
 watch.pack(pady=20)
 
 now = datetime.datetime.now()
@@ -50,7 +50,24 @@ clock()
 
 def resetpts():
     os.remove("house points data.txt")
-    file = open('house points data.txt')
+    file = open('house points data.txt', 'w')
+    file.write('Asgard: ')
+    file.write("\n")
+    file.write("0")
+    file.write("\n")
+    file.write('Xandar: ')
+    file.write("\n")
+    file.write("0")
+    file.write("\n")
+    file.write('Wakanda: ')
+    file.write("\n")
+    file.write("0")
+    file.write("\n")
+    file.write('Valhalla: ')
+    file.write("\n")
+    file.write("0")
+    file.close()
+
     successremove = Label(root, text="POINTS SUCCESSFULLY RESET!", bg="pink", fg="black")
     successremove.pack()
     file.close()
@@ -132,7 +149,8 @@ totaltxt = "Asgard: " + str(asgard_pts_enter.get()) + "\n" + "Wakanda: " + str(w
 # Email Part of Program
 
 def email():
-    contacts = ["secondary.1.students@sis-semarang.org", "secondary.2.students@sis-semarang.org", "secondary.3.students@sis-semarang.org", "secondary.4.students@sis-semarang.org", "jc1.students@sis-semarang.org", "jc2.students@sis-semarang.org", "secondary.teacher@sis-semarang.org"]
+    contacts = ["secondary.1.students@sis-semarang.org", "secondary.2.students@sis-semarang.org","secondary.3.students@sis-semarang.org", "secondary.4.students@sis-semarang.org", "jc1.students@sis-semarang.org", "jc2.students@sis-semarang.org", "secondary.teacher@sis-semarang.org"]
+    
     mailserver = smtplib.SMTP('smtp.gmail.com', 587)
     mailserver.starttls()
     mailserver.login("publicbetaprogram@gmail.com", "publicbeta")
@@ -217,8 +235,7 @@ def addpts():
     successdata.pack()
 
     # Rankings
-
-    overall = [str(asgard), str(xandar), str(wakanda), str(valhalla)]
+    overall = [str(asgard), str(valhalla), str(wakanda), str(xandar)]
 
     d = defaultdict(deque)
     for i, x in enumerate(sorted(overall, reverse=True), start=1):
@@ -230,8 +247,7 @@ def addpts():
         f"\n The rank of Asgard: {result[0]} \n The rank of Valhalla: {result[1]} \n The rank of Wakanda: {result[2]} \n The rank of Xandar: {result[3]}")
 
     file = open('house points data.txt', 'a')
-
-    file.write('\n')
+    file.write("\n")
     file.write(rank)
     file.close()
 
@@ -266,4 +282,6 @@ enter4.config(command=viewdata)
 enter4.pack()
 
 root.mainloop()
+
+
 
