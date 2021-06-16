@@ -27,7 +27,7 @@ root = Tk()
 root.config(bg="pink")
 root.geometry("1000x1500")
 
-# 
+# Clock
 def clock():
     hour = time.strftime("%H")
     minute = time.strftime("%M")
@@ -143,14 +143,16 @@ points.pack()
 # Houses
 
 teams = ['Asgard: ', "Valhalla:", "Wakanda:", "Xandar:"]
-totaltxt = "Asgard: " + str(asgard_pts_enter.get()) + "\n" + "Wakanda: " + str(wakanda_pts_enter.get()) + "\n" + "Xandar: " + str(xandar_pts_enter.get()) + "\n" + "Valhalla: " + str(valhalla_pts_enter.get())
-
 
 # Email Part of Program
 
 def email():
     contacts = ["secondary.1.students@sis-semarang.org", "secondary.2.students@sis-semarang.org","secondary.3.students@sis-semarang.org", "secondary.4.students@sis-semarang.org", "jc1.students@sis-semarang.org", "jc2.students@sis-semarang.org", "secondary.teacher@sis-semarang.org"]
-    
+    mailserver = smtplib.SMTP('smtp.gmail.com', 587)
+    mailserver.starttls()
+    mailserver.login("publicbetaprogram@gmail.com", "publicbeta")
+@@ -285,3 +282,5 @@ def viewdata():
+
     mailserver = smtplib.SMTP('smtp.gmail.com', 587)
     mailserver.starttls()
     mailserver.login("publicbetaprogram@gmail.com", "publicbeta")
@@ -282,6 +284,8 @@ enter4.config(command=viewdata)
 enter4.pack()
 
 root.mainloop()
+
+
 
 
 
